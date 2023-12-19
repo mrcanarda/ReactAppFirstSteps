@@ -145,7 +145,7 @@ function getBook(id) {
 
 // Destrcucturing
 
-const book = getBook(1);
+const book = getBook(2);
 
 // const title = book.title;
 // const author = book.author;
@@ -179,7 +179,22 @@ const updateBook = {
 };
 updateBook;
 
-const summary = `${title}, a ${pages}-page long book, was written by ${author} and published in ${
-  publicationDate.split("-")[0]
-}`;
+// Arrow Functions
+
+// function getYear(str) {
+//   return str.split("-")[0];
+// }
+
+const getYear = (str) => str.split("-")[0];
+console.log(getYear(publicationDate));
+
+const summary = `${title}, a ${pages}-page long book, was written by ${author} and published in ${getYear(
+  publicationDate
+)}. The book has ${hasMovieAdaptation ? "" : "not"} been adapted as a movie`;
 summary;
+
+// if else Note please!!
+
+pagesRange = pages > 1000 ? "over a thousand" : "less than 1000";
+pagesRange;
+console.log(`The book has ${pagesRange} pages`);
