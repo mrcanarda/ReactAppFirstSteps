@@ -145,7 +145,7 @@ function getBook(id) {
 
 // Destrcucturing
 
-const book = getBook(3);
+const book = getBook(1);
 
 // const title = book.title;
 // const author = book.author;
