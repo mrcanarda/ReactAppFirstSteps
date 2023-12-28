@@ -299,9 +299,6 @@ arr;
 // const sortedByPages = books.slice().sort((a, b) => a.pages - b.pages);
 // sortedByPages;
 
-// const pagesAllBooks__ = books.reduce((acc, book) => acc + book.pages, 1);
-// pagesAllBooks__;
-
 // const pagesAllBooksEveryBook = books.slice().sort((a, b) => a.pages - b.pages);
 // pagesAllBooksEveryBook;
 
