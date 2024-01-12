@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import "./index.css";
 
 const pizzaData = [
   {
@@ -20,7 +21,7 @@ const pizzaData = [
     name: "Pizza Spinaci",
     ingredients: "Tomato, mozarella, spinach, and ricotta cheese",
     price: 12,
-    photoName: "/pizzas/spinaci.jpg",
+    photoName: "pizzas/spinaci.jpg",
     soldOut: false,
   },
   {
@@ -49,8 +50,38 @@ const pizzaData = [
 function App() {
   return (
     <div>
-      <h1>Hello React!</h1>
-      <Pizza />
+      <Header />
+      <Menu />
+      <Footer />
+    </div>
+  );
+}
+
+function Header() {
+  const style = { color: "red", fontSize: "48px", textTransform: "uppercase" };
+
+  return <h1 style={style}>Fast React Pizza Co.</h1>;
+}
+
+function Footer() {
+  const hour = new Date().getHours();
+  const openHour = 12;
+  const closeHour = 22;
+  const isOpen = hour >= openHour && hour <= closeHour;
+  console.log(isOpen);
+
+  // if (hour >= openHour && hour <= closeHour) alert("We're currently open");
+  // else alert("Sorry we're closed");
+
+  return (
+    <footer>{new Date().toLocaleDateString()}. We're currently open</footer>
+  );
+}
+
+function Menu() {
+  return (
+    <div>
+      <h2>Our Menu</h2>
       <Pizza />
       <Pizza />
     </div>
@@ -60,15 +91,14 @@ function App() {
 function Pizza() {
   return (
     <div>
-      <img src="/pizzas/spinaci.jpg" />
+      <img src="/pizzas/salamino.jpg" alt="" />
       <h2>Pizza Spinaci</h2>
-      <p>Tomato, mozarella, spinach, and ricotta cheese</p>
+      <p>"Tomato, mozarella, spinach, and ricotta cheese"</p>
     </div>
   );
 }
 
-//React v18
-
+// React v18
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
@@ -76,5 +106,5 @@ root.render(
   </React.StrictMode>
 );
 
-// React before 18
-//  React.render(<App />);
+// const root = ReactDOM.createRoot(document.getElementById("root"));
+// root.render(<App />);
