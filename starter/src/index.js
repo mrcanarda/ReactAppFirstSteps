@@ -49,7 +49,7 @@ const pizzaData = [
 
 function App() {
   return (
-    <div>
+    <div className="container">
       <Header />
       <Menu />
       <Footer />
@@ -58,9 +58,15 @@ function App() {
 }
 
 function Header() {
-  const style = { color: "red", fontSize: "48px", textTransform: "uppercase" };
+  // const style = { color: "red", fontSize: "48px", textTransform: "uppercase" };
 
-  return <h1 style={style}>Fast React Pizza Co.</h1>;
+  const style = {};
+
+  return (
+    <header className="header">
+      <h1 style={style}>Fast React Pizza Co.</h1>
+    </header>
+  );
 }
 
 function Footer() {
@@ -74,27 +80,50 @@ function Footer() {
   // else alert("Sorry we're closed");
 
   return (
-    <footer>{new Date().toLocaleDateString()}. We're currently open</footer>
+    <footer className="footer">
+      {new Date().toLocaleDateString()}. We're currently open
+    </footer>
   );
 }
 
 function Menu() {
   return (
-    <div>
+    <main className="menu">
       <h2>Our Menu</h2>
-      <Pizza />
-      <Pizza />
-    </div>
+      <ul className="pizzas">
+        {pizzaData.map((pizza) => (
+          <Pizza pizzaObj={pizza} key={pizza.name} />
+        ))}
+      </ul>
+      {/*<Pizza
+        name="Pizza Spinaci"
+        ingredients="Tomato, mozarella, spinach, and ricotta cheese"
+        photoName="pizzas/spinaci.jpg"
+        price={10}
+      />
+
+      <Pizza
+        name="Pizza Funghi"
+        ingredients="Tomato, mushrooms"
+        price={12}
+        photoName="pizzas/funghi.jpg"
+  /> */}
+    </main>
   );
 }
 
-function Pizza() {
+function Pizza(props) {
+  console.log(props);
+
   return (
-    <div>
-      <img src="/pizzas/salamino.jpg" alt="" />
-      <h2>Pizza Spinaci</h2>
-      <p>"Tomato, mozarella, spinach, and ricotta cheese"</p>
-    </div>
+    <li className="pizza">
+      <div>
+        <img src={props.pizzaObj.photoName} alt={props.pizzaObj.name} />
+        <h3>{props.pizzaObj.name}</h3>
+        <p>{props.pizzaObj.ingredients}</p>
+        <span>{props.pizzaObj.price + 3}</span>
+      </div>
+    </li>
   );
 }
 
